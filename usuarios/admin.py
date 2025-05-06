@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from .models import Usuario, Estudiante
 
 class UsuarioAdmin(UserAdmin):
-    pass
+    fieldsets = UserAdmin.fieldsets + (('Rol',{'fields':('rol',)}),)
 
-
-# Register your models here.
+admin.site.register(Usuario,UsuarioAdmin)
+admin.site.register(Estudiante)
