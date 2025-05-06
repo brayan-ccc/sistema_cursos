@@ -20,6 +20,9 @@ class Inscripcion(models.Model):
 
     fecha_inscripcion = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        unique_together = ('estudiante','curso')
+
     def __str__(self):
         return f"{self.estudiante.username} Inscrito en: {self.curso.nombre}"
 
