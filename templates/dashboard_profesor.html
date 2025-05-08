@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Profesor{% endblock  %}
+{% block content %}
+<h2>Dashboard de Profesor</h2>
+<h3>Mis cursos</h3>
+
+{% for curso in cursos %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title"> {{ curso.nombre }} </h5>
+            <p><strong>Estudiantes inscritos:</strong></p>
+            
+        </div>
+
+    </div>
+
+
+{% endfor %}
+
+
+{% endblock  %}

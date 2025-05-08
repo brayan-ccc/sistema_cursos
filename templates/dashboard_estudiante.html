@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Profesor{% endblock  %}
+{% block content %}
+<h2>Dashboard de Estudiante</h2>
+<h3>Mis cursos</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Nota 1</th>
+            <th>Nota 2</th>
+            <th>Nota final</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inscripcion in inscripciones  %}
+            <tr>
+                <td> {{inscripcion.curso.nombre}} </td>
+            
+            {% if inscripcion.nota %}
+                <td> {{inscripcion.nota.nota1}} </td>
+                <td> {{inscripcion.nota.nota2}} </td>
+                <td> {{inscripcion.nota.nota_final}} </td>
+                <td>
+                    {% if inscripcion.nota.aprobado %}
+                        <span class="text-success">Aprobado</span>
+                    {% else %}
+                        <span class="text-danger">Reprobado</span>
+
+                    {% endif %}
+
+                </td>
+            <td colspan="4"> No tiene notas registradas</td>
+
+            {% endif %}
+        
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock  %}

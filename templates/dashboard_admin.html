@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Administrador{% endblock  %}
+{% block content %}
+<h2>Dashboard de administrador</h2>
+<h3>Cursos y Profesores</h3>
+<ul>
+    <li><a href="/admin/">Acceder al Admin de DJANGO</a></li>
+</ul>
+
+{% for item in cursos_info %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title"> {{ item.curso.nombre }} </h5>
+            <p><strong>Profesor: {{ item.profesor.get_full_name }} </strong></p>
+            <p><strong>Estudiantes inscritos:</strong></p>
+            
+            <ul>
+                {% for estudiante in item.estudiantes  %}
+                    <li> {{ estudiante.get_full_name }} </li>
+
+                {% empty %}
+                    <li>No hay estudiantes en este curso</li>
+                {% endfor %}
+
+            </ul>
+        </div>
+
+    </div>
+
+{% endfor %}
+
+{% endblock  %}
+
