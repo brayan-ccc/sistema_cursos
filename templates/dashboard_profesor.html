@@ -1,21 +1,65 @@
 {% extends "base.html" %}
-{% block title %}Profesor{% endblock  %}
 {% block content %}
-<h2>Dashboard de Profesor</h2>
-<h3>Mis cursos</h3>
+<h3>Mis Cursos</h3>
 
 {% for curso in cursos %}
-    <div class="card mb-3">
-        <div class="card-body">
-            <h5 class="card-title"> {{ curso.nombre }} </h5>
-            <p><strong>Estudiantes inscritos:</strong></p>
-            
-        </div>
-
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+      {{ curso.nombre }}
     </div>
-
-
+    <div class="card-body">
+      {% with curso.inscripcion_set.all as inscripciones %}
+        {% if inscripciones %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Estudiante</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Nota Final</th>
+                <th>Estado</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for insc in inscripciones %}
+              <tr>
+                <td>{{ insc.estudiante.get_full_name }}</td>
+                {% if insc.nota %}
+                  <td>{{ insc.nota.nota1 }}</td>
+                  <td>{{ insc.nota.nota2 }}</td>
+                  <td>{{ insc.nota.nota_final }}</td>
+                  <td>
+                    {% if insc.nota.aprobado %}
+                      <span class="text-success">Aprobado</span>
+                    {% else %}
+                      <span class="text-danger">Reprobado</span>
+                    {% endif %}
+                  </td>
+                {% else %}
+                  <td colspan="3">Sin notas</td>
+                  <td>-</td>
+                {% endif %}
+                <td>
+                  <form method="post" class="d-flex gap-1">
+                    {% csrf_token %}
+                    <input type="hidden" name="inscripcion_id" value="{{ insc.id }}">
+                    <input type="number" name="nota1" step="0.01" class="form-control" placeholder="Nota 1" required>
+                    <input type="number" name="nota2" step="0.01" class="form-control" placeholder="Nota 2" required>
+                    <button type="submit" class="btn btn-sm btn-success">Guardar</button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No hay estudiantes inscritos.</p>
+        {% endif %}
+      {% endwith %}
+    </div>
+  </div>
+{% empty %}
+  <p>No tienes cursos asignados.</p>
 {% endfor %}
-
-
-{% endblock  %}
+{% endblock %}
