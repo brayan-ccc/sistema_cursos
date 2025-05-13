@@ -1,0 +1,72 @@
+{% extends "vertical.html" %}
+
+{% load static i18n %}
+
+{% block title %}Video{% endblock title %}
+
+{% block extra_css %}{% endblock extra_css %}
+
+{% block page_content %}
+
+{% include "partials/page-title.html" with subtitle="Base UI" title="Embed Video" %}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Ratios video 21:9</h4>
+                <p class="sub-header">Use class <code>.ratio-21x9</code></p>
+                <!-- 21:9 aspect ratio -->
+                <div class="ratio ratio-21x9">
+                    <iframe src="https://www.youtube.com/embed/PrUxWZiQfy4?autohide=0&showinfo=0&controls=0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Ratios video 16:9</h4>
+                <p class="sub-header">Use class <code>.ratio-16x9</code></p>
+                <!-- 16:9 aspect ratio -->
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/PrUxWZiQfy4?ecver=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+<!-- end row -->
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Ratios video 4:3</h4>
+                <p class="sub-header">Use class <code>.ratio-4x3</code></p>
+                <!-- 4:3 aspect ratio -->
+                <div class="ratio ratio-4x3">
+                    <iframe src="https://www.youtube.com/embed/PrUxWZiQfy4?ecver=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Ratios video 1:1</h4>
+                <p class="sub-header">Use class <code>.ratio-1x1</code></p>
+                <!-- 1:1 aspect ratio -->
+                <div class="ratio ratio-1x1">
+                    <iframe src="https://www.youtube.com/embed/PrUxWZiQfy4?ecver=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
+<!-- end row -->
+
+{% endblock page_content %}

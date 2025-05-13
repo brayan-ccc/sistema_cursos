@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block html_attribute %}data-bs-theme="light" data-menu-color="dark" data-topbar-color="light"{% endblock html_attribute %}
+
+{% block extra_css %}{% endblock extra_css %}
+
+{% block body_attribute %}{% endblock body_attribute %}
+
+{% block content %}
+<div class="layout-wrapper">
+
+    {% include 'partials/sidenav.html' %}
+
+    <div class="page-content">
+
+        {% include 'partials/topbar.html' %}
+
+        <div class="px-3">
+
+            <div class="container-fluid">
+                {% block page_content %}{% endblock page_content %}
+            </div>
+        </div>
+
+        {% include 'partials/footer.html' %}
+
+    </div>
+
+</div>
+{% endblock content %}

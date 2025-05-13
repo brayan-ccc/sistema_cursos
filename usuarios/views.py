@@ -94,3 +94,4 @@ def dashboard_estudiante(request):
 @login_required
 def panel_lunoz(request):
     return render(request, 'pages/index.html')
+

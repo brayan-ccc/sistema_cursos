@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'usuarios',
     'cursos',
     'notas',
+    'lunoz',
 ]
 
 MIDDLEWARE = [
@@ -143,4 +144,5 @@ LOGOUT_REDIRECT_URL = '/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
+STATICFILES_DIRS = [BASE_DIR / 'static']
 

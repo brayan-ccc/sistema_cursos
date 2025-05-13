@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Cursos y Profesores</h3>
+{% for item in cursos_info %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.curso.nombre }}</h5>
+      <p><strong>Profesor:</strong> {{ item.profesor.get_full_name }}</p>
+      <p><strong>Estudiantes inscritos:</strong></p>
+      <ul>
+        {% for estudiante in item.estudiantes %}
+          <li>{{ estudiante.get_full_name }}</li>
+        {% empty %}
+          <li>No hay estudiantes.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endfor %}
+
+<a href="{% url 'admin:app_list' 'cursos' %}" class="btn btn-success">Gestionar Cursos</a>
+<a href="{% url 'admin:app_list' 'usuarios' %}" class="btn btn-primary">Gestionar Profesores y Estudiantes</a>
+{% endblock %}

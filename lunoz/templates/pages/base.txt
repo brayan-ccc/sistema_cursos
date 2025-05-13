@@ -1,0 +1,16 @@
+{% extends "vertical.html" %}
+
+{% load static i18n %}
+
+{% block title %}File Upload{% endblock title %}
+
+{% block extra_css %}{% endblock extra_css %}
+
+{% block page_content %}
+
+{% include "partials/page-title.html" with subtitle="Base UI" title="Avatars" %}
+
+
+
+{% endblock page_content %}
+
